@@ -67,11 +67,8 @@ module.exports = function (injectedStore){
     }
 }
 
-    async function upsert(body){
-        const findId = await store.get(TABLA, body.id);
-            if (findId.id === body.id){
-                return store.upsert(TABLA, body);
-            }
+    function upsert(body){
+        return store.update(TABLA, body);
     }
 
     async function remove(id){
